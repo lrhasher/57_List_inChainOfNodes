@@ -64,4 +64,11 @@ public class List_inChainOfNodes{
         headReference = newHead;
         return true;
      }
+     public void set(int index, Object val) {
+        Node node = headReference;
+        int i = 0;
+        while(i < index)
+          node = node.getReferenceToNextNode();
+        node.setCargoReference( val);
+     }
 }
