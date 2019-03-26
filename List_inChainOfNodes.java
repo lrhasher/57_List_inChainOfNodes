@@ -52,6 +52,11 @@ public class List_inChainOfNodes{
                 + toString(node.getReferenceToNextNode());
     }
 
+    private Node getNode(int index){
+      for (Node node = headReference, int i = 0;
+            i < index;
+            node = node.getReferenceToNextNode(), i++)
+    }
 
     /**
       Append @value to the head of this list.
@@ -70,9 +75,7 @@ public class List_inChainOfNodes{
              addAsHead( val);
          else {
              Node newElement = new Node( val);
-             Node previousElement = headReference;
-             for (int i = 1; i < index; i++) // cycle through nodes
-                previousElement = previousElement.getReferenceToNextNode();
+             Node previousElement = getNode(index - 1);
              newElement.setReferenceToNextNode( previousElement.getReferenceToNextNode());
              previousElement.setReferenceToNextNode(newElement);
          }
@@ -83,26 +86,19 @@ public class List_inChainOfNodes{
          if (index == 0)
             headReference = headReference.getReferenceToNextNode();
          else {
-             Node previousElement = headReference;
-             for (int i = 1; i < index; i++) // cycle through nodes
-                previousElement = previousElement.getReferenceToNextNode();
+             Node previousElement = getNode(index - 1);
              previousElement.setReferenceToNextNode( // set next node 2 nodes ahead, so the node between is skipped
-                            previousElement.getReferenceToNextNode().getReferenceToNextNode() 
+                            previousElement.getReferenceToNextNode().getReferenceToNextNode()
                                                     );
          }
          return true;
      }
 
      public void set(int index, Object val) {
-        Node node = headReference;
-        for (int i = 0; i < index; i++)
-          node = node.getReferenceToNextNode();
+        Node node = getNode( index);
         node.setCargoReference( val);
      }
      public Object get( int index) {
-         Node node = headReference;
-         for (int i = 0; i < index; i++)
-           node = node.getReferenceToNextNode();
-         return node.getCargoReference();
+         return getNode( index).getCargoReference();
      }
 }
