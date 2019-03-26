@@ -71,7 +71,7 @@ public class List_inChainOfNodes{
          else {
              Node newElement = new Node( val);
              Node previousElement = headReference;
-             for (int i = 1; i < index; i++)
+             for (int i = 1; i < index; i++) // cycle through nodes
                 previousElement = previousElement.getReferenceToNextNode();
              newElement.setReferenceToNextNode( previousElement.getReferenceToNextNode());
              previousElement.setReferenceToNextNode(newElement);
@@ -83,12 +83,12 @@ public class List_inChainOfNodes{
          if (index == 0)
             headReference = headReference.getReferenceToNextNode();
          else {
-         Node previousElement = headReference;
-         for (int i = 1; i < index; i++)
-            previousElement = previousElement.getReferenceToNextNode();
-         previousElement.setReferenceToNextNode(
-                        previousElement.getReferenceToNextNode().getReferenceToNextNode()
-                                                );
+             Node previousElement = headReference;
+             for (int i = 1; i < index; i++) // cycle through nodes
+                previousElement = previousElement.getReferenceToNextNode();
+             previousElement.setReferenceToNextNode( // set next node 2 nodes ahead, so the node between is skipped
+                            previousElement.getReferenceToNextNode().getReferenceToNextNode() 
+                                                    );
          }
          return true;
      }
