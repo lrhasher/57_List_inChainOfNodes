@@ -64,11 +64,45 @@ public class List_inChainOfNodes{
         headReference = newHead;
         return true;
      }
+
+     public boolean add( int index, Object val) {
+         if (index == 0)
+             addAsHead( val);
+         else {
+             Node newElement = new Node( val);
+             Node previousElement = headReference;
+             for (int i = 1; i < index; i++)
+                previousElement = previousElement.getReferenceToNextNode();
+             newElement.setReferenceToNextNode( previousElement.getReferenceToNextNode());
+             previousElement.setReferenceToNextNode(newElement);
+         }
+         return true;
+     }
+
+     public boolean remove(int index) {
+         if (index == 0)
+            headReference = headReference.getReferenceToNextNode();
+         else {
+         Node previousElement = headReference;
+         for (int i = 1; i < index; i++)
+            previousElement = previousElement.getReferenceToNextNode();
+         previousElement.setReferenceToNextNode(
+                        previousElement.getReferenceToNextNode().getReferenceToNextNode()
+                                                );
+         }
+         return true;
+     }
+
      public void set(int index, Object val) {
         Node node = headReference;
-        int i = 0;
-        while(i < index)
+        for (int i = 0; i < index; i++)
           node = node.getReferenceToNextNode();
         node.setCargoReference( val);
+     }
+     public Object get( int index) {
+         Node node = headReference;
+         for (int i = 0; i < index; i++)
+           node = node.getReferenceToNextNode();
+         return node.getCargoReference();
      }
 }

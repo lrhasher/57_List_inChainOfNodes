@@ -25,5 +25,25 @@ public class UserOfList {
         }
         System.out.println( "populated list: " + list
                           + System.lineSeparator());
+
+        list.set(0 , 5);
+        System.out.println(list + " " + list.get(0) + System.lineSeparator());
+        list.set(1 , "w");
+        System.out.println(list + " " + list.get(1) + System.lineSeparator());
+        list.set(3 , "v");
+        System.out.println(list + " " + list.get(3) + System.lineSeparator());
+
+        list.add(1 , "I");
+        list.add(0, "uwu");
+        list.add(6 , 3.14);
+        System.out.println( "populated list: " + list
+                          + System.lineSeparator());
+
+        list.remove(6);
+        list.remove(1);
+        list.remove(0);
+        System.out.println( "populated list: " + list
+                          + System.lineSeparator());
+
     }
 }
