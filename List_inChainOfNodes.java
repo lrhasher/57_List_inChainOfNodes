@@ -94,9 +94,8 @@ public class List_inChainOfNodes{
          return true;
      }
 
-     public void set(int index, Object val) {
-        Node node = getNode( index);
-        node.setCargoReference( val);
+     public Object set(int index, Object val) {
+         getNode( index).setCargoReference( val);
      }
      public Object get( int index) {
          return getNode( index).getCargoReference();
