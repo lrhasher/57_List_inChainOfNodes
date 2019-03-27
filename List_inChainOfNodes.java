@@ -77,10 +77,8 @@ public class List_inChainOfNodes{
          if (index == 0)
              addAsHead( val);
          else {
-             Node newElement = new Node( val);
-             Node previousElement = getNode(index - 1);
-             newElement.setReferenceToNextNode( previousElement.getReferenceToNextNode());
-             previousElement.setReferenceToNextNode(newElement);
+             Node newElement = new Node( val , getNode( index));
+             getNode(index - 1).setReferenceToNextNode( newElement);
 
              // Node newElement = new Node(set(index , val));
              // newElement.setReferenceToNextNode(getNode( index + 1));
